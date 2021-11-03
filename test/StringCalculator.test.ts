@@ -6,6 +6,7 @@ describe('StringCalculator should ', () => {
      * TODO: LIST
      * - "" -> 0
      * - "1,2,3" -> 6
+     * - "1\n2,3 -> 6
     */
 
     it('not sum not numbers', () => {
@@ -18,6 +19,10 @@ describe('StringCalculator should ', () => {
 
     it('sum separated numbers by commas', () => {
       expect(sum('1,2,3')).toEqual(6)
+    })
+    
+    it('identify \\n as a separator like commas is', () => {
+      expect(sum('1\n2,3')).toEqual(6)
     })
 
 })
