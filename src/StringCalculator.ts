@@ -1,6 +1,24 @@
-export default function sum (numbers: string) {
-    
-    const allowedCharacters :string[] = [
+export default function sum(numbers: string) {
+    const DELIMITERS = /,|\n/gi;
+
+    let sequenceNotAllowed = numbers.indexOf(",\n");
+
+    if (sequenceNotAllowed === -1) {
+        let numberList = numbers.split(DELIMITERS);
+        let result: number = 0;
+
+    numberList.forEach((number) => {
+        result += Number(number);
+    });
+
+    return result;
+    } else {
+        return `Number expected but '\n' found at position ${
+            sequenceNotAllowed + 1
+        }.`;
+    }
+
+    /*     const allowedCharacters :string[] = [
         '0',
         '1',
         '2',
@@ -23,7 +41,6 @@ export default function sum (numbers: string) {
         {
             lastNumber += character
         } else {
-            //result = '' ? 0 : += Number(lastNumber)
             result += Number(lastNumber)
             lastNumber = ''
         }
@@ -32,5 +49,5 @@ export default function sum (numbers: string) {
     //Solución para que pase el test:
     //if(lastNumber != '') result += Number(lastNumber)
 
-    return result
+    return result */
 }
